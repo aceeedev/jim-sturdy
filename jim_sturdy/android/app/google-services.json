@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "437613668749",
+    "project_id": "jim-sturdy",
+    "storage_bucket": "jim-sturdy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437613668749:android:5e1b0d1c0c5f35d93635c4",
+        "android_client_info": {
+          "package_name": "com.example.jim_sturdy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCysYx7BkVX7gFnw6aMU5CbflXy5IDcJYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

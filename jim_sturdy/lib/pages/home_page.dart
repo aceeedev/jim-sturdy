@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:jim_sturdy/backend/google_auth.dart';
+import 'package:jim_sturdy/pages/login_page.dart';
+import 'package:jim_sturdy/providers/main_provider.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -23,12 +25,22 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text('Home'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(
+                'Signed in as: ${context.read<MainProvider>().userCredential!.user?.displayName}'),
+            TextButton(
+                onPressed: () async {
+                  await signOutFromGoogle();
+
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const LoginPage()));
+                },
+                child: const Text('Sign out')),
             const Text(
               'You have pushed the button this many times:',
             ),

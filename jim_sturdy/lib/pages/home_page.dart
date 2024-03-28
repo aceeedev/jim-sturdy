@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:jim_sturdy/backend/google_auth.dart';
 import 'package:jim_sturdy/pages/login_page.dart';
 import 'package:jim_sturdy/providers/main_provider.dart';
+import 'package:jim_sturdy/widgets/frame_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,28 +28,30 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Home'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-                'Signed in as: ${context.read<MainProvider>().userCredential!.user?.displayName}'),
-            TextButton(
-                onPressed: () async {
-                  await signOutFromGoogle();
+      body: Frame(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                  'Signed in as: ${context.read<MainProvider>().userCredential!.user?.displayName}'),
+              TextButton(
+                  onPressed: () async {
+                    await signOutFromGoogle();
 
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const LoginPage()));
-                },
-                child: const Text('Sign out')),
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const LoginPage()));
+                  },
+                  child: const Text('Sign out')),
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

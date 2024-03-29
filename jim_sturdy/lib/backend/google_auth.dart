@@ -22,8 +22,9 @@ Future<UserCredential?> _signIntoFirebaseAuth(
 
 Future<UserCredential?> tryToRememberSignInWithGoogle() async {
   final GoogleSignInAccount? googleUser = await GoogleSignIn().signInSilently();
+  if (googleUser == null) return null;
 
-  return _signIntoFirebaseAuth(googleUser!);
+  return _signIntoFirebaseAuth(googleUser);
 }
 
 Future<UserCredential?> signInWithGoogle() async {

@@ -24,16 +24,16 @@ class App extends StatelessWidget {
             if (snapshot.hasError) {
               return Center(
                   child: Text('An error has occurred, ${snapshot.error}'));
-            } else if (snapshot.hasData) {
-              UserCredential? userCredential = snapshot.data;
+            }
 
-              if (userCredential != null) {
-                context.read<MainProvider>().setUserCredential(userCredential);
+            UserCredential? userCredential = snapshot.data;
 
-                return const HomePage();
-              } else {
-                return const LoginPage();
-              }
+            if (userCredential != null) {
+              context.read<MainProvider>().setUserCredential(userCredential);
+
+              return const HomePage();
+            } else {
+              return const LoginPage();
             }
           }
 

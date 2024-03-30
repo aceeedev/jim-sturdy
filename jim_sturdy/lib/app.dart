@@ -12,9 +12,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 152, 144, 209)),
         useMaterial3: true,
       ),
       home: FutureBuilder(
@@ -27,13 +26,12 @@ class App extends StatelessWidget {
             }
 
             UserCredential? userCredential = snapshot.data;
-
             if (userCredential != null) {
               context.read<MainProvider>().setUserCredential(userCredential);
 
               return const HomePage();
             } else {
-              return const LoginPage();
+              return const HomePage();
             }
           }
 
